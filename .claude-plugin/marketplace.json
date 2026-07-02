@@ -1,0 +1,24 @@
+{
+  "name": "money-page-skills",
+  "owner": {
+    "name": "the90skid"
+  },
+  "metadata": {
+    "description": "The Money Page skills — pick the right money page for your product, then build it in your Shopify store with AI.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "money-page-skills",
+      "source": "./",
+      "description": "Two skills from The Money Page playbook by DTC Daily: pick-your-money-page (researches your store and recommends which of the 7 money page types to build) and build-your-money-page (drafts the copy and creates the page in your Shopify store, unpublished, via the official connector).",
+      "version": "1.0.0",
+      "author": {
+        "name": "the90skid"
+      },
+      "homepage": "https://github.com/the90skid/money-page-skills",
+      "category": "ecommerce",
+      "tags": ["shopify", "ecommerce", "landing-page", "sales-page", "money-page", "cowork", "mcp", "dtc"]
+    }
+  ]
+}
