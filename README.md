@@ -17,6 +17,13 @@ Two Claude skills that come with **[The Money Page](https://www.dtcdailynews.com
 
 Full setup instructions, including connecting the official Shopify connector, are in Part 3 of The Money Page.
 
+## Using ChatGPT instead
+
+Skills are a Claude feature, but both workflows ship as ChatGPT paste-prompts in the [`chatgpt/`](chatgpt/) folder:
+
+- [`pick-your-money-page-prompt.md`](chatgpt/pick-your-money-page-prompt.md) — paste into ChatGPT (browsing on), or save as a Project's instructions
+- [`build-your-money-page-prompt.md`](chatgpt/build-your-money-page-prompt.md) — same flow; ChatGPT hands you the final page as HTML and you paste it into Shopify (Online Store → Pages → Add page → `</>` view)
+
 ## Requirements
 
 - Claude paid plan (claude.ai, Cowork, or Claude Code)
