@@ -6,7 +6,7 @@ Two Claude skills that come with **[The Money Page](https://www.dtcdailynews.com
 
 | Skill | What it does |
 |-------|--------------|
-| `pick-your-money-page` | Researches your store and product, asks a few questions, and recommends which of the 7 money page types to build first — with real example pages to study. |
+| `pick-your-money-page` | Researches your store and product, asks a few questions, and recommends which money page to build first — one of 4 formats (article, listicle, quiz, offer page) plus one angle — with example pages from the Funnel Vault to study. |
 | `build-your-money-page` | Interviews you for inputs, optionally models the structure of a reference page you share, drafts the copy, and creates the page in your Shopify store as an **unpublished** draft via the official Shopify connector. |
 
 ## Install (Claude Cowork)
@@ -15,7 +15,7 @@ Two Claude skills that come with **[The Money Page](https://www.dtcdailynews.com
 2. Paste this link: `https://github.com/the90skid/money-page-skills`
 3. Hit the **+** to install.
 
-Full setup instructions, including connecting the official Shopify connector, are in Part 3 of The Money Page.
+Full setup instructions, including connecting the official Shopify connector, are in Part 5 of The Money Page (2nd edition).
 
 ## Using ChatGPT instead
 
@@ -32,7 +32,7 @@ Skills are a Claude feature, but both workflows ship as ChatGPT paste-prompts in
 ## Safety
 
 - `pick-your-money-page` is read-only.
-- `build-your-money-page` creates one new unpublished page. It never edits your live theme, product pages, or navigation.
+- `build-your-money-page` creates one new unpublished page. It never edits your live theme, product pages, or navigation. Theme changes (like a menu-free page template) are only ever made on a duplicate theme you name.
 
 ## Updates
 

@@ -8,6 +8,7 @@ graphql_operations:
   - shop:query
   - pageCreate:mutation
 status: beta
+version: 2.0
 compatibility: Claude Cowork / claude.ai / Claude Code
 ---
 
@@ -18,7 +19,8 @@ Builds ONE money page end to end: research → skeleton → draft copy → creat
 - Shopify MCP connector connected (for the build step)
 - Required store scopes: `write_content` (pages), `read_products`
 - Web browsing/fetch available for research (fallback: user pastes product page text and reviews)
-- Optional but recommended: a completed recommendation from `pick-your-money-page`
+- Optional but recommended: a completed recommendation from `pick-your-money-page` (format + angle + customer)
+- Optional: a reference page from the Funnel Vault (link + full-page screenshot) and a brand design system (Claude Design) or `brand.md`
 
 ## Parameters
 
@@ -27,7 +29,9 @@ Builds ONE money page end to end: research → skeleton → draft copy → creat
 | product_url | url | yes | The product this page sells |
 | ad_concept | text | yes | The ad (copy or idea) that will point at this page |
 | reference_page | url or screenshot | no | A money page the user wants to model |
-| page_type | enum | no | article / listicle / made-for-you / quiz / deal / reason-it-works / everything |
+| format | enum | no | article / listicle / quiz / offer |
+| angle | enum | no | persona / mechanism / switch / trend / desire / enemy / story / authority / occasion / comparison |
+| cta_target | url | no | Product page URL, or a cart link (`https://<store>/cart/<VARIANT_ID>:1`) that drops the product straight into checkout |
 | brand_file | file | no | brand.md with colors, fonts, button style, voice |
 
 ## Safety
@@ -42,25 +46,42 @@ Builds ONE money page end to end: research → skeleton → draft copy → creat
 
 2. **SKELETON** — two paths:
    - **Reference page provided:** extract its skeleton, never its words. List each section top to bottom: what it is, what job it does (hook / problem / belief change / mechanism / proof / offer / guarantee / CTA), the order the argument runs. That's the outline. Test for the finished page: *the original brand would recognize their structure, but not one sentence of the copy.*
-   - **No reference:** use the standard skeleton for `page_type` (below). If no type given, pick the best fit from research and say why.
+   - **No reference:** use the standard skeleton for `format` (below), shaped by `angle`. If neither is given, pick the best fit from research and say why.
+   - Present the skeleton as a **wireframe**: for every section, its purpose, the content it needs, the proof it requires, the recommended visual, and the CTA placement. Do not write copy yet.
 
-3. **BRAND FILE** — if `brand_file` exists, follow it. If not, offer to create one: from the store homepage note primary color, accent color, heading and body fonts, button shape, voice (playful, clinical, premium, blunt). Save as `brand.md`; tell the user to reuse it for every page so all pages look like one brand.
+3. **BRAND FILE** — if the user has a Claude Design design system, they will design the final page there (see DESIGN NOTE). If `brand_file` exists, follow it. If not, offer to create one: from the store homepage note primary color, accent color, heading and body fonts, button shape, voice (playful, clinical, premium, blunt). Save as `brand.md`; tell the user to reuse it for every page so all pages look like one brand.
 
-4. **DRAFT** — fill the skeleton using the copy rules (below). Show the draft as clean sections with headers. Ask for edits. Do not build until approved.
+4. **DRAFT** — first state the buying argument in 6 lines: the problem this customer already recognizes, why their current solution falls short, why this product fits better, the distinct reasons to believe it (with evidence for each), the objections to answer, the offer it leads to. Then fill the wireframe using the copy rules (below). Show the draft as clean sections with headers. Mark missing evidence as `[MISSING: …]` instead of filling it. Ask for edits. Do not build until approved.
+   - **Test variant (offer it):** after approval, offer ONE alternative first screen (headline + hero + first proof) that runs a different angle on the same page. This is the user's first A/B test. Build it only if they say yes.
+   - **DESIGN NOTE:** AI writes good copy and mediocre layouts. If the user wants an agency-level design, stop here: give them the approved copy plus a design brief (a grid, a type scale, a spacing scale, consistent components, the full copy, brand colors) to paste into Claude Design with their design system. They come back with the exported design, and you build that instead.
 
-5. **BUILD** — quiz pages: recommend a quiz app instead (see Quiz note). All other types: create the page via the connector using the operation below, `isPublished: false`. Apply the brand file. Mobile first (most visitors arrive from a phone ad; short paragraphs, images legible at 375px). Report the preview URL and what was built, section by section.
+5. **BUILD** — quiz pages: recommend a quiz app instead (see Quiz note). All other formats: create the page via the connector using the operation below, `isPublished: false`. Apply the brand file. Mobile first (most visitors arrive from a phone ad; short paragraphs, images legible at 375px). Every CTA points to `cta_target` — never the homepage. Report the preview URL and what was built, section by section.
+   - **No menu, no footer.** A standard Shopify page renders inside the theme with the store header and footer, which breaks the one-exit rule. Ask the user whether their theme has a money-page template without header/footer (for example `page.money`). If yes, set `templateSuffix` to it in `pageCreate`. If no, say so plainly, and give them this prompt to run on a **duplicate** theme (never the live one): "On the unpublished duplicate theme [THEME NAME] only, create a page template called `money` that uses a layout with no header, no navigation and no footer, keeping the theme's head, styles, analytics and pixel. Do not change the live theme or any other template." Then set `templateSuffix: "money"` once it exists.
 
 6. **SHIP CHECKLIST** — walk the user through it (below).
 
-## Page Skeletons
+## Page Skeletons (formats)
 
-- **Article That Sells** — headline that promises information ("Before You Buy ___, Read This") → story that builds a problem the reader didn't know they had → why it happens → product revealed as the answer → proof → offer.
-- **Listicle** — pick one frame first: movement ("people are switching") / momentum ("this is trending") / persona ("made for people like you") / desire ("life is better with this") / attack ("what they're not telling you"). Then numbered points in the buyer's worry order, each = claim + why + proof → offer.
-- **Made-for-You** — headline names exactly who it's for → their worries answered in their order → reviews only from people like them → offer. Nothing speaks to anyone else.
+- **Article** — headline that promises information ("Before You Buy ___, Read This") → story that builds a problem the reader didn't know they had → why it happens → product revealed as the answer → proof → offer.
+- **Listicle** — one angle first, then 6–12 numbered points in the buyer's worry order (most important problem near the top), each = claim + why + proof → offer. Six strong reasons beat twelve padded ones. No reason included just to raise the count.
 - **Quiz** — see Quiz note below.
-- **Deal Page** — the offer as the headline → what you get, itemized with real value → the honest reason the deal exists (holiday, launch, first-order) → proof → claim it.
-- **Reason-It-Works** — the old way and the specific thing it gets wrong → the mechanism, named in words a customer could repeat at dinner → show it working → proof proportional to the claim → offer with a guarantee (new mechanisms need de-risking).
-- **Everything Page** — the full journey on one page: what this is → why it matters → why it works → who it's for (a section per buyer type if needed) → proof → comparison → FAQ → guarantee → buy box. Closes on the page.
+- **Offer page** — the offer as the headline → what you get, itemized with real value → the honest reason the deal exists (holiday, launch, first order) → proof → claim it. No fake timers.
+- **Long version (any format)** — when the page must do the whole job alone: what this is → why it matters → why it works → who it's for (a section per buyer type if needed) → proof → comparison → FAQ → guarantee → buy box. Closes on the page.
+
+## Angles (shape the argument inside the format)
+
+- **Persona** — headline names exactly who it's for → their worries in their order → reviews only from people like them. Nothing speaks to anyone else.
+- **Mechanism** — the old way and the specific thing it gets wrong → the mechanism, named in words a customer could repeat at dinner → show it working → proof proportional to the claim → guarantee (new mechanisms need de-risking).
+- **Switch** — "people are switching": what they're leaving, why, what they get instead.
+- **Trend** — real momentum (sales, reviews, press) up top; the reasons it's taking off.
+- **Desire** — no enemy, no problem; stacked reasons life is better with it.
+- **Enemy** — what the incumbent gets wrong (only true, provable points) → the alternative.
+- **Story** — a real first-person account from someone the reader relates to. Never invented.
+- **Authority** — a real, named expert or institution the reader trusts carries the argument.
+- **Occasion** — the same page re-dressed for a real date (holiday, season, launch).
+- **Comparison** — side by side with the alternative the buyer knows, on facts you can prove.
+
+One page, one angle. Never stack angles.
 
 ## Quiz Note
 
@@ -116,7 +137,8 @@ mutation CreateMoneyPage($page: PageCreateInput!) {
     }
   }
 }
-# variables: { "page": { "title": "<page title>", "body": "<full HTML>", "isPublished": false } }
+# variables: { "page": { "title": "<page title>", "body": "<full HTML>", "isPublished": false, "templateSuffix": "money" } }
+# omit templateSuffix if the store has no header/footer-free page template yet (see BUILD step)
 ```
 
 If the connector is not connected: deliver the page as clean HTML plus exact paste instructions (Shopify admin → Online Store → Pages → Add page → `</>` HTML view → paste → Save, keep hidden), and what to check after saving.
@@ -150,12 +172,12 @@ MONEY PAGE BUILT (UNPUBLISHED)
 1. Open the page on your phone. Does the first screen keep the ad's exact promise?
 2. Every claim is true and you can back it up.
 3. No image placeholders remain, and no image belongs to another brand.
-4. One clear CTA, repeated. No menu, no dead links.
+4. One clear CTA, repeated. No menu, no footer links, no dead links.
 5. The click after the CTA lands somewhere that keeps the same promise — product page or checkout, never the homepage.
 6. Pixel/analytics installed on the page.
 7. Click through and pretend to buy: the offer works end to end.
 
-Close with the honest line: this page is a draft until traffic votes. Run it, read the numbers in a week, iterate or kill without sentiment.
+Close with the honest line and the first test: this page is a draft until traffic votes. Duplicate your best ad and change only the destination: one copy to this page, one to your current product page (or use Meta's A/B test to split evenly). Run at least 7 days, judge on cost per purchase, don't kill either side before it has spent 2–3× your target cost per purchase, and only call a winner on a clear gap (roughly 20% or more) that still holds a few days later. Compare purchase counts, not just percentages. Log the result, win or lose.
 
 ## Error Handling
 
