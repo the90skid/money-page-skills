@@ -10,22 +10,31 @@ Every money page is two choices: a FORMAT (Article, Listicle, Quiz, Offer page) 
 
 RULES: Base every statement on what your research actually returns or what I tell you. Never infer or invent review counts, revenue, traction, or customer quotes. If a page won't load, say so. Plain language throughout; explain any marketing term in one line.
 
-STEP 1 — Ask me for: (1) my store URL, (2) the product page URL I want to advertise, (3) optionally a competitor I lose customers to, (4) optionally the ad I plan to run. Then browse and read: my product page (what it is, price, variants, current pitch, visible proof), my customer reviews (who buys and why, in their exact words), my homepage (catalog size, current offers), and the competitor if given. Summarize in 5-8 lines and ask me to correct anything wrong. If you cannot browse, ask me to paste my product page text and 10 recent reviews.
+STEP 1 — Ask me for: (1) my store URL, (2) the product page URL I want to advertise, (3) optionally a competitor I lose customers to, (4) optionally the ad I plan to run. Then browse and read: my product page (what it is, price, variants, current pitch, visible proof), my customer reviews (who buys and why, in their exact words; flag any "I've tried everything" or "I was skeptical" reviews), my homepage (catalog size, current offers), and the competitor if given. Then do a competition check: write my main promise in a few words, search it, and read the first screen of 3-5 competitors selling to the same buyer. Count how many make the same promise. Summarize in 5-8 lines (include "X of Y competitors make the same promise") and ask me to correct anything wrong. If you cannot browse, ask me to paste my product page text and 10 recent reviews, and to name 3 competitors and their main promise.
 
-STEP 2 — Ask me only these four questions: (1) Is the traffic for this page cold (new audiences) or warm (retargeting, followers, past visitors, email)? (2) What can I afford for a first-time buyer offer, and is there margin or repeat purchase behind it? (3) When new customers don't buy, what reason do I hear most? (4) What do I have that competitors can't claim: an ingredient, process, story, expert, study, or honestly nothing yet?
+STEP 2 — I don't know marketing terms like "awareness stage" or "market sophistication", so never ask me to name one. Ask me only these plain questions (skip any your research already answered):
+(1) Who will see this ad: new people Meta finds for me (broad, interests, lookalikes), or people who already know me (site visitors, video viewers, followers, my email list, past buyers)?
+(2) Before seeing my ad, do these people already use something like my product (another brand, a cheaper version, a home remedy)?
+(3) If you asked them, would they name the problem my product fixes in their own words, or would they say they're fine?
+(4) What does my ad open with: a story or surprising fact / a problem / "a better way to..." / my product's name / a price or deal?
+(5) What can I afford for a first-time buyer offer, and is there margin or repeat purchase behind it?
+(6) When new customers don't buy, what reason do I hear most (too expensive / didn't get it / didn't believe it / chose a competitor / never knew they needed it)?
+(7) What do I have that competitors can't claim: an ingredient, process, story, expert, study, or honestly nothing yet?
 
-STEP 3 — Answer three questions, one line of reasoning each:
-Q1. How aware is the buyer this ad will reach? This picks the FORMAT:
-- Unaware ("I don't have a problem") → Article (angles: Story, Enemy)
-- Problem aware ("I have the problem, don't know the fix") → Article or Listicle (Enemy, Mechanism, Persona, Desire)
-- Solution aware ("I know the kind of fix — which one?") → Listicle or Quiz (Switch, Comparison, Mechanism)
-- Product aware ("I know you, not sure you're for me") → Listicle or Quiz (Persona, Authority, Trend)
-- Most aware ("I want it, give me a reason to buy now") → Offer page (Occasion, or the offer itself)
-Q2. How many times has this buyer heard my main claim? This picks the ANGLE:
-- Claim is new in the market → say it plainly: Desire, Trend, or a strong offer
-- Everyone makes the same claim → Mechanism (a nameable difference) or Comparison (win side by side on provable facts)
-- Buyer is tired of claims → Persona, Story, Authority, or Enemy
-Q3. Is the traffic cold or warm? Cold prospecting is mostly unaware/problem aware; retargeting and email are product aware/most aware. If this disagrees with Q1, trust the traffic.
+STEP 3 — Work out three answers yourself, then show them to me in plain words with the evidence, and ask me to confirm:
+A1. How much the buyer already knows (awareness). This picks the FORMAT. Walk down this ladder and stop at the first yes:
+- Ready to buy, just needs a reason now (past buyers, cart abandoners, email list) → Most aware → Offer page (Occasion, or the offer itself)
+- Already knows my brand (Q1) → Product aware → Listicle or Quiz (Persona, Authority, Trend)
+- Already uses something like it (Q2 yes) → Solution aware → Listicle or Quiz (Switch, Comparison, Mechanism)
+- Would name the problem (Q3 yes) → Problem aware → Article or Listicle (Enemy, Mechanism, Persona, Desire)
+- None of these → Unaware → Article (Story, Enemy)
+If my ad's opening (Q4) points to a different stage, tell me: the page must start where the ad did.
+A2. How tired the buyer is of my promise (sophistication). This picks the ANGLE:
+- 0-1 competitors make my promise → new claim → say it plainly: Desire, Trend, or a strong offer
+- 2 or more make it → crowded → Mechanism (a nameable difference) or Comparison (win side by side on provable facts)
+- Reviews full of "tried everything / skeptical", or my top lost-sale reason is "didn't believe it" → tired of claims → Persona, Story, Authority, or Enemy
+A3. Cold or warm traffic (Q1). New people = cold = usually unaware or problem aware, whatever the ad says. If this disagrees with A1, trust the traffic.
+Show it like: "Your buyer: knows the problem, doesn't know you yet (problem aware), because... Your promise: 4 of 5 competitors say the same thing (crowded)... Your traffic: new people (cold), matches."
 
 The formats: ARTICLE reads like an editorial; builds a problem, changes a belief, then reveals the product. LISTICLE is the pitch as 6-12 numbered reasons around one angle. QUIZ asks questions, then recommends a product, so it feels like a diagnosis (built with a quiz app). OFFER PAGE puts the deal in the headline, for the most-aware buyer; needs real offer economics. Any article or listicle can run long when it must do the whole selling job alone.
 

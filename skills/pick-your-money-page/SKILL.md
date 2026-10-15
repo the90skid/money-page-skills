@@ -39,21 +39,38 @@ Every page is two choices:
 
 1. **RESEARCH** — fetch and read, in order:
    - `product_url`: what the product is, price, variants/SKU count, current pitch, visible proof (review count, stars, press, guarantee)
-   - Customer reviews on the page: who actually buys and why; note distinct buyer groups and the exact words customers use
+   - Customer reviews on the page: who actually buys and why; note distinct buyer groups and the exact words customers use. Flag any reviews that say "I've tried everything", "I was skeptical", "nothing else worked" or similar.
    - `store_url`: catalog size, current offers running
-   - `competitor_url` (if given): how they pitch, i.e. what this buyer has already heard
-   **Output:** a 5–8 line research summary. Ask the user to correct anything wrong before proceeding.
+   - **The competition check:** write the product's main promise in a few words (e.g. "better sleep", "gut health"). Search it (web, and Meta Ad Library if you can reach it) and read the first screen of 3–5 competitors who sell to the same buyer, plus `competitor_url` if given. Count how many make the same main promise.
+   **Output:** a 5–8 line research summary, including "X of Y competitors make the same promise". Ask the user to correct anything wrong before proceeding.
 
-2. **INTERVIEW** — ask only what research can't answer:
-   1. Is traffic for this page cold (new audiences) or warm (retargeting, followers, past visitors, email)?
-   2. What can you afford for a first-time buyer offer? Is there margin or repeat purchase (subscription, reorders) behind it?
-   3. When new customers don't buy, what reason do you hear most? (Too expensive / didn't get it / didn't believe it / chose a competitor / never knew they needed it)
-   4. What do you have that competitors can't claim? (Ingredient, process, story, expert, study — or honestly, nothing yet)
+2. **INTERVIEW** — the user will not know marketing terms like "awareness stage" or "market sophistication". Never ask them to name one. Ask these plain questions instead, only the ones research can't answer, one short block at a time:
+   1. **Who will see this ad?** New people Meta finds for you (broad, interests, lookalikes) — or people who already know you (site visitors, video viewers, followers, your email list, past buyers)?
+   2. **Before they see your ad, do these people already use something like your product?** (another brand, a cheaper version, a home remedy)
+   3. **If you asked them, would they name the problem your product fixes, in their own words?** ("I sleep badly", "my dog keeps scratching") — or would they say they're fine?
+   4. **What does your ad open with?** A story or surprising fact / a problem / "a better way to…" / your product's name / a price or deal. (Skip if no ad yet.)
+   5. **What can you afford for a first-time buyer offer?** Is there margin or repeat purchase (subscription, reorders) behind it?
+   6. **When new customers don't buy, what reason do you hear most?** (Too expensive / didn't get it / didn't believe it / chose a competitor / never knew they needed it)
+   7. **What do you have that competitors can't claim?** (Ingredient, process, story, expert, study — or honestly, nothing yet)
 
-3. **THE THREE QUESTIONS** — answer each from the research and interview, and show your reasoning in one line each:
-   1. **How aware is the buyer this ad will reach?** → picks the format (table below).
-   2. **How many times has this buyer heard the product's main claim?** (market sophistication) → picks the angle (table below).
-   3. **Is the traffic cold or warm?** → reality check on question 1. If they disagree, trust the traffic.
+3. **THE THREE ANSWERS** — work these out yourself from the research and interview. Then show them to the user in plain words, each with the evidence, and ask them to confirm or correct:
+   1. **How much the buyer already knows** (awareness) → picks the format. Walk this ladder from the top; stop at the first yes:
+      - Ready to buy, just needs a reason now? (past buyers, cart abandoners, email list waiting for a deal) → **Most aware**
+      - Already knows the brand? (Q1: people who already know you) → **Product aware**
+      - Already uses something like it? (Q2 yes) → **Solution aware**
+      - Would name the problem? (Q3 yes) → **Problem aware**
+      - None of these → **Unaware**
+      If the ad's opening (Q4) points to a different stage, say so: the page must start where the ad did, so either the page or the ad changes.
+   2. **How tired the buyer is of the promise** (sophistication) → picks the angle:
+      - 0–1 of the competitors make the same promise → **new claim**
+      - 2 or more make it → **crowded claim**
+      - Reviews full of "tried everything / skeptical", or the top lost-sale reason (Q6) is "didn't believe it" → **tired of claims**
+   3. **Cold or warm traffic** (Q1) → reality check on answer 1. New people = cold = usually unaware or problem aware, whatever the ad says. If it disagrees with answer 1, trust the traffic.
+
+   Show it like this, with no jargon in the lines themselves:
+   > **Your buyer:** knows the problem, doesn't know you yet (problem aware) — because…
+   > **Your promise:** 4 of 5 competitors say the same thing (crowded) — so you need a new reason to believe it.
+   > **Your traffic:** new people (cold) — matches.
 
 4. **DECIDE** — one format + one angle, a runner-up, then apply the feasibility filter.
 
